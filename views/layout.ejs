@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  </head>
+<body ng-app="dayTimeApp">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <div>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container"  ng-controller="dataCtrl" >
+  
+  <div class="row">
+    <!--showing left data-->
+      <div class="col-md-4">
+        <p data-ng-repeat="element in apiReturn.data | limitTo:10" >{{element.left}}</p>
+      </div>
+       <!--showing right data-->
+      <div class="col-md-4">
+        <p data-ng-repeat="element in apiReturn.data  | limitTo:10">{{element.right}}</p>
+      </div>
+  </div>
+  
+</div> <!-- End of container -->
+
+
+
+
+
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+  </body>
+</html>
