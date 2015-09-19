@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   </head>
 <body ng-app="dayTimeApp">
@@ -21,7 +22,14 @@
 </nav>
 
 <div class="container"  ng-controller="dataCtrl" >
-  
+  <div class="row">
+  	<div class="col-md-6">
+        <p id="left-large" data-ng-repeat="element in apiReturn.data | limitTo:1" >{{element.left}}</p>
+    </div>
+    <div class="col-md-6">
+        <p id="right-large" data-ng-repeat="element in apiReturn.data | limitTo:1" >{{element.right}}</p>
+    </div>
+  </div>
   <div class="row">
     <!--showing left data-->
       <div class="col-md-4">

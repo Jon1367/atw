@@ -1,0 +1,14 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+#left-large, #right-large {
+	font-size: 5em;
+	font-family: serif;
+	text-align: center;
+}
+
+.container {
+	padding: 100px 0 0 0;
+}
