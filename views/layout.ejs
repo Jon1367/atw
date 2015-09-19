@@ -1,62 +1,156 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  </head>
-<body ng-app="dayTimeApp">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <div>
-
-    </div>
-  </div>
-</nav>
-
-<div class="container"  ng-controller="dataCtrl" >
-  <div class="row">
-  	<div class="col-md-6">
-        <p id="left-large" data-ng-repeat="element in apiReturn.data | limitTo:1" >{{element.left}}</p>
-    </div>
-    <div class="col-md-6">
-        <p id="right-large" data-ng-repeat="element in apiReturn.data | limitTo:1" >{{element.right}}</p>
-    </div>
-  </div>
-  <div class="row">
-    <!--showing left data-->
-      <div class="col-md-4">
-        <p data-ng-repeat="element in apiReturn.data | limitTo:10" >{{element.left}}</p>
-      </div>
-       <!--showing right data-->
-      <div class="col-md-4">
-        <p data-ng-repeat="element in apiReturn.data  | limitTo:10">{{element.right}}</p>
-      </div>
-  </div>
-  
-</div> <!-- End of container -->
-
-
-
-
-
-
-
-
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="/js/angular.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
-    <script type="text/javascript" src="./js/main.js"></script>
-  </body>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	<body ng-app="dayTimeApp">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Westin X Jon - ATW1509</a>
+					<div class="dropdownSection">
+						<span>Show me data from the last: </span>
+						<select id="dataMode">
+							<option value="12">12 Hours</option>
+							<option value="24">24 Hours</option>
+							<option value="48">48 Hours</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="container" ng-controller="dataCtrl">
+			<div class="row centerStage">
+				<h1 class="text-center">Current Values</h1>
+				<div class="col-md-12">
+					<hr>
+				</div>
+				<div class="col-md-6">
+					<h3 class="text-center">Left</h3>
+					<p class="text-center large">21</p>
+				</div>
+				<div class="col-md-6">
+					<h3 class="text-center">Right</h3>
+					<p class="text-center large">47</p>
+				</div>
+			</div>
+			<div class="row statsContainer">
+				<div class="col-md-12">
+					<hr class="noMarg">
+				</div>
+				<div class="col-md-6 liveStream">
+					<h1 class="text-center">Live Stream</h1>
+					<hr>
+					<table>
+					<thead>
+						<tr>
+							<th>Left</th>
+							<th>Right</th>
+						</tr>
+					</thead>
+						<tr>
+							<td>68</td>
+							<td>47</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>18</td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-md-6 staticStats">
+					<h1 class="text-center">Average Values</h1>
+					<hr>
+					<table class="averages">
+					<thead>
+						<tr>
+							<th>Left</th>
+							<th>Right</th>
+						</tr>
+					</thead>
+						<tr>
+							<td>68</td>
+							<td>47</td>
+						</tr>
+					</table>
+					<hr>
+					<h1 class="text-center">Highest Values Logged</h1>
+					<hr>
+					<table class="highest">
+						<tr>
+							<td>Left:</td>
+							<td>68</td>
+							<td>2015-09-19T13:58:31.326Z</td>
+						</tr>
+						<tr>
+							<td>Right:</td>
+							<td>47</td>
+							<td>2015-09-19T16:32:12.832Z</td>
+						</tr>
+					</table>
+					<hr>
+					<h1 class="text-center">Lowest Values Logged</h1>
+					<hr>
+					<table class="lowest">
+						<tr>
+							<td>Left:</td>
+							<td>68</td>
+							<td>2015-09-19T13:58:31.326Z</td>
+						</tr>
+						<tr>
+							<td>Right:</td>
+							<td>47</td>
+							<td>2015-09-19T16:32:12.832Z</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<hr class="noMarg footPadding">
+		</div> <!-- End of container -->
+	    <script src="/socket.io/socket.io.js"></script>
+	    <script src="/js/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	    <script src="/js/angular.min.js"></script>
+	    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	    <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+	    <script type="text/javascript" src="./js/main.js"></script>
+    </body>
 </html>
